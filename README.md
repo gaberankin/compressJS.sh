@@ -17,7 +17,7 @@ $ ./compressjs.sh jquery-ui-1.8.16.custom.min.js chat-widget.js templ.min.js
 to specify an output file, use the `-o` option:
 
 ```bash
-$ ./compressjs.hs jquery-ui-1.8.16.custom.min.js chat-widget.js templ.min.js -o outputfile.js
+$ ./compressjs.sh jquery-ui-1.8.16.custom.min.js chat-widget.js templ.min.js -o outputfile.js
 ```
 
 The script will prompt you if the file already exists (but only if you specify the output file.  otherwise, it just uses the auto-generated filename based on the date as normal.  this is a todo item that I plan to fix).
@@ -25,7 +25,7 @@ The script will prompt you if the file already exists (but only if you specify t
 If you need to automate the action but don't want to have to confirm everytime you want to overwrite the file, add `-y` to the argument list:
 
 ```bash
-$ ./compressjs.hs -y jquery-ui-1.8.16.custom.min.js chat-widget.js templ.min.js -o outputfile.js
+$ ./compressjs.sh -y jquery-ui-1.8.16.custom.min.js chat-widget.js templ.min.js -o outputfile.js
 ```
 
 Sure you can use wildcards in file names:
