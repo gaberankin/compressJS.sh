@@ -92,6 +92,3 @@ else:
 	print "\nBuild file %s created.\n" % filename
 ' $@
 
-
-echo "$outfile"
-echo "${code}"
