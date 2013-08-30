@@ -19,11 +19,12 @@ do
 			case $nextone in
 				'-o' )
 					if [ $allowforce = 0 ]; then
-						if [ -e "$f" ]; then
+						if [ -f "$f" ]; then
+							#file exists and is not a directory
 							echo "$f already exists.  ok to overwrite? [Y/n] "
 							read overwrite
 							if [ $overwrite != 'Y' ]; then
-								echo "file not overwritten.  exiting"
+								echo "file not overwritten.  exiting" 1>&2
 								exit 1
 							fi
 						fi
@@ -32,10 +33,11 @@ do
 					nextone=0
 					;;
 				* )
-					if [ -r "$f" ]; then
+					if [ -r "$f" ] && [ -f "$f" ]; then
+						echo "$f"
 						code="${code} --data-urlencode js_code@${f}"
 					else
-						echo "$f not found or not readable.  skipping"
+						echo "$f not found or not readable.  skipping" 1>&2
 					fi
 					;;
 			esac
@@ -44,7 +46,7 @@ do
 done
 
 if [ "$code" = "" ]; then
-	echo "no valid files specified.  exiting."
+	echo "no valid files specified.  exiting." 1>&2
 	exit 1
 fi
 
