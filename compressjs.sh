@@ -23,7 +23,7 @@ do
 							#file exists and is not a directory
 							echo "$f already exists.  ok to overwrite? [Y/n] "
 							read overwrite
-							if [ $overwrite != 'Y' ]; then
+							if [ $overwrite != 'Y' ] && [ $overwrite != 'y' ]; then
 								echo "file not overwritten.  exiting" 1>&2
 								exit 1
 							fi
@@ -90,6 +90,7 @@ else:
 	filename = "'${outfile}'"
 	f = open(filename, "w")
 	f.write(data["compiledCode"])
+	f.close()
 
 	print "\nBuild file %s created.\n" % filename
 ' $@
